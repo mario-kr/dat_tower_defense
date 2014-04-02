@@ -16,6 +16,12 @@ class Tower extends iio.Shape
             this.rangeIndicator.setAlpha(0)
         io.addObj(this.rangeIndicator)
         this.setPos(x, y)
+        
+        this.damage
+        this.HP         #nur für base von belang
+        this.elemental  #fire, ice, explosive, pierce
+        this.attacks    #support (=false) oder angriff(=true)
+        this.level      #upgrade level
 
     toggleRangeIndicator: ->
         this.rangevisible != this.rangevisible
@@ -66,12 +72,48 @@ class BaseTower extends Tower
     constructor: ->
         super
         this.img.setFillStyle("navy")
+        this.HP = 10000
 
 class NormalTower extends Tower
     constructor: ->
         super
         this.img.setFillStyle("lightblue")
-
+        this.damage = 20
+        this.supports = []
+        this.attacks = true
+        
+class MediumTower extends Tower
+    constructor: ->
+        super
+        this.img.setFillStyle("lightblue")
+        this.damage = 40
+        this.supports = []
+        this.attacks = true
+        
+class SupportTower extends Tower
+    constructor: ->
+        super
+        this.attacks = false
+            
+class FireTower extends SupportTower
+    constructor: ->
+        super
+        this.elemental = "fire"
+        
+class IceTower extends SupportTower
+    constructor: ->
+        super
+        this.elemental = "ice"
+        
+class ExplosiveTower extends SupportTower
+    constructor: ->
+        super
+        this.elemental = "explosive"
+        
+class PierceTower extends SupportTower
+    constructor: ->
+        super
+        this.elemental = "pierce"
 
 class Checkpoint extends iio.Obj
     constructor: (x, y)->
