@@ -142,7 +142,7 @@ class Game
         io.addToGroup("checkpoints",new iio.MultiLine(points).setStrokeStyle("red").setLineWidth(1), "checkpoints")
 
     setupMouse: (io)->
-        this.tempTurret = new TempTower(this.grid,io,10,10,2,0)
+        this.tempTurret = new TempTower(this.grid,io,10,10,2,4)
         this.tempTurret.img.setFillStyle("green").setAlpha(0.6)
         io.addToGroup("overlays", this.tempTurret)
 
@@ -173,6 +173,7 @@ class Game
                 tower = new NormalTower(this.grid, io, this.tempTurret.pos.x, this.tempTurret.pos.y, 2, 4)
                 io.addToGroup("towers", tower)
                 this.towers.push tower
+                this.tempTurret.buildable = false
 
     setBuildMode: (mode)->
         this.buildMode = mode
