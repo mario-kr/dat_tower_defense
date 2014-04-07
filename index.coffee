@@ -18,7 +18,6 @@ class Tower extends iio.Shape
         this.setPos(x, y)
         
         this.damage
-        this.HP         #nur für base von belang
         this.elemental  #fire, ice, explosive, pierce
         this.attacks    #support (=false) oder angriff(=true)
         this.level      #upgrade level
